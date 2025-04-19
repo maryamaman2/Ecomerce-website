@@ -4,23 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baby Collection</title>
-    <link rel="stylesheet" href="icons/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    </style>
+    <link rel="stylesheet" href="icons/css/all.min.css">
 </head>
 <body class="bg-gray-50">
     <header class="bg-white shadow">
         <div class="flex justify-between items-center px-6 py-3 text-sm">
             <ul class="flex space-x-4">
-                <li><a href="#" class="hover:underline">About Us</a></li>
-                <li><a href="#" class="hover:underline">Privacy</a></li>
-                <li><a href="#" class="hover:underline">FAQ</a></li>
-                <li><a href="#" class="hover:underline">Careers</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Careers</a></li>
             </ul>
             <ul class="flex space-x-4">
-                <li><a href="#" class="hover:underline">My Wishlist</a></li>
-                <li><a href="#" class="hover:underline">Track Your Order</a></li>
+                <li><a href="#">My Wishlist</a></li>
+                <li><a href="#">Track Your Order</a></li>
             </ul>
             <div class="flex space-x-3">
                 <a href="#"><i class="fab fa-facebook text-blue-600"></i></a>
@@ -31,9 +29,9 @@
             </div>
         </div>
         <nav class="flex justify-between items-center px-6 py-4">
-            <div class="text-2xl font-bold">LOGO</div>
+            <div class="text-2xl font-bold">Clothory</div>
             <ul class="hidden md:flex space-x-6 text-lg">
-                <li><a href="Home.html" class="hover:underline">Home</a></li>
+                <li><a href="Home.html" class="hover:underline hover:text-gray-400 transition0.5s">Home</a></li>
                 <li><a href="men.html" class="hover:underline">Men</a></li>
                 <li><a href="women.html" class="hover:underline">Women</a></li>
                 <li><a href="baby collection.html" class="hover:underline">Baby Collection</a></li>
@@ -54,7 +52,10 @@
     </div>
 
     <section class="p-6">
-        <div class="text-lg font-semibold">Category <p class="text-gray-500 text-sm">Home / Category</p></div>
+        <div class="text-lg font-semibold">Category 
+            <p class="text-gray-500 text-sm">Home / Category</p>
+        </div>
+
         <div class="grid md:grid-cols-4 gap-6 mt-6">
             <aside class="bg-white p-4 rounded shadow space-y-4">
                 <input type="text" placeholder="Category" class="w-full border p-2 rounded">
@@ -63,11 +64,13 @@
                     <input type="text" placeholder="Size" class="w-full border p-2 rounded">
                     <input type="text" placeholder="Color" class="w-full border p-2 rounded">
                 </div>
+
                 <div>
                     <h6 class="font-bold mt-4">Filter by Price</h6>
                     <input type="range" class="w-full">
                     <div>0 to 500</div>
                 </div>
+
                 <div>
                     <h6 class="font-bold mt-4">Filter by Genres</h6>
                     <div class="space-y-1">
@@ -78,6 +81,7 @@
                         <label><input type="checkbox"> Biography</label>
                     </div>
                 </div>
+
                 <div>
                     <h6 class="font-bold mt-4">Filter by Brand</h6>
                     <div class="space-y-1">
@@ -90,52 +94,34 @@
                 </div>
             </aside>
 
-            <div id="productId" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+ 
+            <div id="productId" class="grid grid-cols-1 md:grid-cols-2 gap-6 col-span-3">
+    
             </div>
-            </section>   
-    <script>
+        </div>
+    </section>
 
+    <script>
         let product = document.getElementById("productId");
 
         let productsAPI = () => {
             fetch('https://fakestoreapi.com/products/')
-            .then(res => res.json())
-            .then(json => {
-            
-               product.innerHTML = json.map((item) => {
-    return `
-        <div class="bg-white rounded-xl shadow p-4 hover:scale-105 transform transition duration-200">
-            <img src="${item.image}" alt="${item.title}" class="w-full h-48 object-contain mb-4" />
-            <h2 class="text-lg font-semibold mb-2">${item.title}</h2>
-            <p class="text-gray-600 text-sm mb-3">${item.description}</p>
-            <p class="text-green-600 font-bold">Price: $${item.price}</p>
-        </div>
-    `;
-}).join('');
-
-                console.log(json);
-            })
+                .then(res => res.json())
+                .then(json => {
+                    product.innerHTML = json.map(item => `
+                        <div class="bg-white rounded-xl shadow p-4 hover:scale-105 transform transition duration-200">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-48 object-contain mb-4" />
+                            <h2 class="text-lg font-semibold mb-2">${item.title}</h2>
+                            <p class="text-gray-600 text-sm mb-3">${item.description}</p>
+                            <p class="text-green-600 font-bold">Price: $${item.price}</p>
+                        </div>
+                    `).join('');
+                })
+                .catch(err => console.error('Error loading products:', err));
         }
 
         productsAPI();
-
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <footer class="bg-white p-6 mt-10">
@@ -153,31 +139,38 @@
             <i class="fab fa-youtube"></i>
         </div>
         <div class="grid md:grid-cols-5 gap-4 text-sm">
-            <div><h3 class="font-bold mb-2">Shop Men</h3>
+            <div>
+                <h3 class="font-bold mb-2">Shop Men</h3>
                 <ul class="space-y-1">
                     <li><a href="#">Clothing Fashion</a></li>
                     <li><a href="#">Winter</a></li>
                     <li><a href="#">Summer</a></li>
                     <li><a href="#">Formal</a></li>
                     <li><a href="#">Casual</a></li>
-                </ul></div>
-            <div><h3 class="font-bold mb-2">Shop Women</h3>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold mb-2">Shop Women</h3>
                 <ul class="space-y-1">
                     <li><a href="#">Clothing Fashion</a></li>
                     <li><a href="#">Winter</a></li>
                     <li><a href="#">Summer</a></li>
                     <li><a href="#">Formal</a></li>
                     <li><a href="#">Casual</a></li>
-                </ul></div>
-            <div><h3 class="font-bold mb-2">Baby Collection</h3>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold mb-2">Baby Collection</h3>
                 <ul class="space-y-1">
                     <li><a href="#">Clothing Fashion</a></li>
                     <li><a href="#">Winter</a></li>
                     <li><a href="#">Summer</a></li>
                     <li><a href="#">Formal</a></li>
                     <li><a href="#">Casual</a></li>
-                </ul></div>
-            <div><h3 class="font-bold mb-2">Quick Links</h3>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold mb-2">Quick Links</h3>
                 <ul class="space-y-1">
                     <li><a href="#">Track Your Order</a></li>
                     <li><a href="#">Support</a></li>
@@ -185,7 +178,8 @@
                     <li><a href="#">Carrier</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact Us</a></li>
-                </ul></div>
+                </ul>
+            </div>
         </div>
     </footer>
 </body>
